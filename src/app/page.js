@@ -1,95 +1,38 @@
+"use client"
+
 import Image from "next/image";
-import styles from "./page.module.css";
-
+import "./page.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { useRef } from "react";
+import Codification from "@/components/Codification.jsx";
 export default function Home() {
+    const tSBtnContainer = useRef();
+    const stretchLine = () =>{
+      const tsBtn = tSBtnContainer.current.childNodes[0];
+      tsBtn.style.width = "140px";
+    }
+  
+    const shrinkLine = () =>{
+        const tsBtn = tSBtnContainer.current.childNodes[0];
+        tsBtn.style.width = "0px";
+    }
+    
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <header  className = " bg-content1 flex justify-center items-center h-screen sm:justify-around" >
+        <div className="leftSideHeader mr-0 sm:mr-20 w-50 ">
+            <h1 className="font-bold mb-30px text-start text-xl ">Hamming</h1>
+            <h1 className="font-bold text-xl text-end"> codes! </h1>
+          <div onMouseEnter={stretchLine} onMouseLeave={shrinkLine} ref={tSBtnContainer} className="flex justify-center items-center">
+            <hr className="absolute transition-all"/>
+           <button className="titleSectionBtn" onClick={()=> scrollTo(0, 600)}><FontAwesomeIcon icon={faArrowDown}/></button>
+          </div>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+        <Image className="hidden sm:flex" src="/binary-code-svgrepo-com.svg" width={300} height={300}/>
+     </header>
+     <Codification/>
+    </>
   );
 }
+
