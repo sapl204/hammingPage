@@ -1,6 +1,6 @@
 "use client"
 import { multiply } from "mathjs";
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
 import { Button } from "@nextui-org/react";
 export default function Codification(){
   const inputContainer = useRef();
@@ -23,9 +23,9 @@ export default function Codification(){
                                 [0,0,0,1,1,1,1]];
     for(let i of inputContainer.current.childNodes){
       if(isNaN(parseInt(i.value)) || parseInt(i.value) > 1 ){
-        i.classList.add("bg-red");
+        i.classList.add("bg-danger");
         return;
-      }else i.classList.remove("bg-red");
+      }else i.classList.remove("bg-danger");
       binary.push(parseInt(i.value))
     }
     const matrixCodificated = multiply(binary, generatorMatrix).map(x => x%2 == 0 ? x=0 : x=1);
@@ -33,13 +33,22 @@ export default function Codification(){
     matrixCodificated.map(x => {
         matrixCodificatedString += x;
     })
-    e.target.nextSibling.innerHTML = matrixCodificatedString;
-    
+    e.target.nextSibling.firstChild.innerHTML = "Your [7,4]-Hamming Binary Code: "
+    e.target.nextSibling.nextSibling.innerHTML = matrixCodificatedString;
+    window.scrollTo(0, 800);
   }
+
+  const codificateResultContainer = useCallback(node =>{
+    window.addEventListener("scroll", ()=>{
+      console.log(window.scrollY)
+      if(window.scrollY >= 300) node.lastChild.classList.replace("w-0", "w-full")
+      else node.lastChild.classList.replace("w-full", "w-0")
+    })
+  },[])
+
   return(
      <>
         <section className="h-fit flex justify-center flex-col items-center">
-        
           <h2 className="pt-10 font-bold text-xl"> Codificate your binary Code: </h2>
           <div className="pt-20" ref={inputContainer}>
             {[ "" ,"", "", ""].map((input, index)=>{
@@ -51,7 +60,10 @@ export default function Codification(){
             })}
           </div>
           <Button onClick={codificateHamming} className="flex justify-content mt-10 mb-10 font-bold">Shoot</Button>
-          
+          <div ref={codificateResultContainer}>
+            <h3 className="text-xl"></h3>
+            <hr className="transition-all delay-200 w-0 m-auto bg-white"/>
+          </div>
           <p className="tracking-widest font-bold text-xl"></p>
         </section>
      </>   

@@ -4,7 +4,6 @@
   font-size: 20px;
   border-color: transparent;
   cursor: pointer;
-  transition: border-style .5s, border-color .8s, box-shadow .8s;
 }
 
 
