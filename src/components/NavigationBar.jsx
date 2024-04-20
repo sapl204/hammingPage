@@ -9,6 +9,12 @@ import {AcmeLogo} from "./AcmeLogo.jsx";
 import { useState } from "react";
 export default function NavigationBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const hideAndScroll = () =>{
+    setIsMenuOpen(false);
+    setTimeout(()=>{
+      window.scroll(0, 600)
+    },300)
+  }
   return (
     <Navbar className="fixed bg-transparent backdrop-blur-md "  
             shouldHideOnScroll
@@ -31,7 +37,7 @@ export default function NavigationBar() {
       </NavbarContent>
       <NavbarContent className=" hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <Link color="foreground" href="#codification">
             Codification
           </Link>
         </NavbarItem>
@@ -42,7 +48,7 @@ export default function NavigationBar() {
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu className=" bg-transparent backdrop-blur-md " >
-        <NavbarMenuItem><Link href="#" className="w-full"  color="foreground">Codification</Link></NavbarMenuItem>
+        <NavbarMenuItem><Link onClick={hideAndScroll} className="w-full"  color="foreground">Codification</Link></NavbarMenuItem>
         <NavbarMenuItem><Link href="#" className="w-full"  color="foreground">Correction</Link></NavbarMenuItem>
       </NavbarMenu>
     </Navbar>
