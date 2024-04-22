@@ -2,19 +2,9 @@
 import { multiply } from "mathjs";
 import { useRef, useCallback } from "react";
 import { Button } from "@nextui-org/react";
+import InputsGroup from "./InputsGroup";
 export default function Codification(){
   const inputContainer = useRef();
-  const next = e =>{ 
-    if(!isNaN(parseInt(e.target.value)) && e.target.nextSibling != undefined){
-      e.target.classList.contains("bg-danger") ? e.target.classList.remove("bg-danger") : null
-      e.target.nextSibling.focus()
-    }else if(isNaN(parseInt(e.target.value))){
-      return;
-    }else{
-      e.target.parentNode.firstChild.focus();
-    }
-  }
-
   const codificateHamming = e => {
     const binary = [];
     const generatorMatrix = [[1,0,0,0,0,1,1],
@@ -44,25 +34,17 @@ export default function Codification(){
 }
   const codificateResultContainer = useCallback(node =>{
     window.addEventListener("scroll", ()=>{
-      if(window.scrollY >= 300) node.lastChild.classList.replace("w-0", "w-full")
+      if(window.scrollY >= 400) node.lastChild.classList.replace("w-0", "w-full")
       else node.lastChild.classList.replace("w-full", "w-0")
     })
   },[])
 
   return(
      <>
-        <section id="codification" className="h-fit flex justify-center flex-col items-center">
+        <section id="codification" className="h-fit flex justify-center flex-col items-center bg-gradient-to-l  from-black to-primary-50">
           <h2 className="mt-10 font-bold text-xl"> Codificate your binary Code: </h2>
-          <div className="pt-20" ref={inputContainer}>
-            {[ "" ,"", "", ""].map((input, index)=>{
-              if (index == 0){
-                return  <input maxLength={1} onChange={next}  className="h-14 w-14 sm:h-36 sm:w-36 border-none outline-none text-center text-xl transition-background focus:bg-primary"/>
-              }else{
-                return <input maxLength={1} onChange={next} className="ml-10 h-14 w-14 sm:h-36 sm:w-36 border-none outline-none text-center text-xl transition-background focus:bg-primary"/>
-              }
-            })}
-          </div>
-          <Button onClick={codificateHamming} className="flex justify-content mt-10 mb-5 font-bold">Shoot</Button>
+          <InputsGroup inputsQuantity={4} refer = {inputContainer}/>
+          <Button onClick={codificateHamming} className="flex justify-content mt-10 mb-5 font-bold bg-transparent border-solid border-2 border-white hover:text-black hover:bg-white pl-10 pr-10 before:content-none before:bg-white before:w-10 outline-none">Shoot</Button>
           <div ref={codificateResultContainer}>
             <h3 className="text-xl sm:text-l"></h3>
             <hr className="transition-all delay-200 w-0 m-auto bg-white"/>

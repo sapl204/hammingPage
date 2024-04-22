@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { useRef } from "react";
 import Codification from "@/components/Codification.jsx";
+import Correction from "@/components/Correction";
 export default function Home() {
     const tSBtnContainer = useRef();
     const stretchLine = () =>{
@@ -32,6 +33,7 @@ export default function Home() {
         <Image className="hidden sm:flex" src="/binary-code-svgrepo-com.svg" width={300} height={300}/>
      </header>
      <Codification/>
+     <Correction/>
     </>
   );
 }
