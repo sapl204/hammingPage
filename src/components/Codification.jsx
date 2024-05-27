@@ -4,7 +4,8 @@ import { useRef, useCallback } from "react";
 import MathJax from "./Mathjax";
 import { Button, Tooltip, useDisclosure } from "@nextui-org/react";
 import InputsGroup from "./InputsGroup";
-import CodificationExp from "./CodificationExp"; 
+import CodificationExp from "./CodificationExp";
+import MagicButton from "./MagicButton"; 
 export default function Codification(){
   const inputContainer = useRef();
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
@@ -56,7 +57,7 @@ export default function Codification(){
         <section id="codification" className="h-fit flex justify-center flex-col items-center bg-gradient-to-l  from-black to-primary-50">
           <h2 className="mt-10 font-bold text-xl mb-5"> Codificate your binary Code: </h2>
           <InputsGroup inputsQuantity={4} refer = {inputContainer}/>
-          <Button onClick={codificateHamming} className="flex justify-content mt-10 mb-5 font-bold bg-transparent border-solid border-2 border-white hover:text-black hover:bg-white pl-10 pr-10 before:content-none before:bg-white before:w-10 outline-none">Shoot</Button>
+          <MagicButton event={codificateHamming} content="Shoot!!"/>
           <div ref={codificateResultContainer}>
             <h3 className="text-xl sm:text-l"></h3>
             <hr className="transition-all delay-200 w-0 m-auto bg-white"/>

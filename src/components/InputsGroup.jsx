@@ -12,11 +12,15 @@ export default function InputsGroup(props){
       e.target.parentNode.firstChild.focus();
     }
   }
-  const [inputs, setInputs] = useState([<input maxLength={1} onChange={next} className="h-14 w-14 sm:h-36 sm:w-36 border-none outline-none text-center text-xl transition-background focus:bg-primary"/> ]);
+  const [inputs, setInputs] = useState([<input maxLength={1} onFocus={e => e.target.classList.replace("opacity-50", "opacity-full")}
+     onBlur={e => e.target.value == "" ? e.target.classList.replace("opacity-full", "opacity-50") : null}
+     onChange={next} className=" opacity-50 h-14 w-14 sm:h-36 sm:w-36 border-none outline-none text-center text-xl transition-background focus:bg-primary"/> ]);
   const [counter, setCounter] = useState(1);
   useEffect(() =>{
     if(counter < props.inputsQuantity-1){
-          setInputs(e => [...e, <input maxLength={1} onChange={next} className="ml-10 h-14 w-14 sm:h-36 sm:w-36 border-none outline-none text-center text-xl transition-background focus:bg-primary"/>])
+          setInputs(e => [...e, <input maxLength={1} onFocus={e => e.target.classList.replace("opacity-50", "opacity-full")}
+              onBlur={e => e.target.value == "" ? e.target.classList.replace("opacity-full", "opacity-50") : null}
+              onChange={next} className=" opacity-50 ml-10 h-14 w-14 sm:h-36 sm:w-36 border-none outline-none text-center text-xl transition-background focus:bg-primary"/>])
           setCounter(counter + 1);
     }else{
       return;
