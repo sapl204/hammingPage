@@ -55,7 +55,7 @@ export default function Codification(){
      <>
         <section id="codification" className="h-fit flex justify-center flex-col items-center bg-gradient-to-l  from-black to-primary-50">
           <h2 className="mt-10 font-bold text-xl mb-5"> Codificate your binary Code: </h2>
-          <InputsGroup inputsQuantity={4} refer = {inputContainer}/>
+          <InputsGroup inputsQuantity={5} refer = {inputContainer}/>
           <MagicButton event={codificateHamming} content="Shoot!!"/>
           <div ref={codificateResultContainer}>
             <h3 className="text-xl sm:text-l"></h3>
