@@ -32,7 +32,7 @@ export default function Codification(){
         e.target.nextSibling.nextSibling.innerHTML = matrixCodificatedString;   
         window.scrollTo(0, 800);
         setTimeout(()=>{
-          e.target.nextSibling.nextSibling.nextSibling.classList.replace("opacity-0", "opacity-full")
+          e.target.nextSibling.nextSibling.nextSibling.classList.replace("top-24", "top-0")
         }, 1000)
       
     }catch(e){
@@ -64,14 +64,14 @@ export default function Codification(){
           </div>
           <p className="tracking-widest font-bold text-xl sm:text-l ">
           </p>
-          <div className="flex justify-end w-full transition-all opacity-0">
+          <div className="flex justify-end w-full transition-all relative top-24 ">
             <Tooltip showArrow = {true}content={<p className="font-bold">Click me to know what's happening</p>}>
               <Button onPress={onOpen} className=" min-w-unit-10 bg-transparent mr-10 sm:mr-40 mb-10 border-solid border-2 border-white rounded-full font-bold pl-2 pr-2
                 hover:bg-white hover:text-content1 transition-all">?</Button>
             </Tooltip>
           </div>
           <MathJax/>
-          <CodificationExp isOpen = {isOpen} onOpenChange={onOpenChange} content={content} />
+          <CodificationExp isOpen = {isOpen} onOpenChange={onOpenChange} content={content} title="Codification" />
         </section>
      </>   
   );

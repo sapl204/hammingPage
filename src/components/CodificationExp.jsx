@@ -20,7 +20,7 @@ export default function CodificationExp(props){
           {(onClose)=>(
             <>
               {console.log(props.isOpen)}
-              <ModalHeader className="flex justify-center items-center flex-col gap-1"> Codification</ModalHeader>
+              <ModalHeader className="flex justify-center items-center flex-col gap-1"> {props.title}</ModalHeader>
               <ModalBody>
                   <p>{props.content}</p>
               </ModalBody>

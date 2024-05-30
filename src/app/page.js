@@ -7,6 +7,7 @@ import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { useRef } from "react";
 import Codification from "@/components/Codification.jsx";
 import Correction from "@/components/Correction";
+import Footer from "@/components/Footer";
 export default function Home() {
     const tSBtnContainer = useRef();
     const stretchLine = () =>{
@@ -21,7 +22,7 @@ export default function Home() {
     
   return (
     <>
-      <header  className = " bg-content1 flex justify-center items-center h-screen sm:justify-around" >
+      <header id="pageBanner"  className = " bg-content1 flex justify-center items-center h-screen sm:justify-around" >
         <div className="leftSideHeader mr-0 sm:mr-20 w-50 ">
             <h1 className="font-bold mb-30px text-start text-xl ">Hamming</h1>
             <h1 className="font-bold text-xl text-end"> codes! </h1>
@@ -34,6 +35,7 @@ export default function Home() {
      </header>
      <Codification/>
      <Correction/>
+     <Footer/>
     </>
   );
 }
