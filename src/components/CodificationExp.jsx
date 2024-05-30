@@ -1,4 +1,5 @@
 import { Modal,ModalContent, ModalBody, ModalHeader, ModalFooter, Button } from "@nextui-org/react" 
+import { MathJax } from "better-react-mathjax"
 export default function CodificationExp(props){
   return(
     <>
@@ -22,7 +23,7 @@ export default function CodificationExp(props){
               {console.log(props.isOpen)}
               <ModalHeader className="flex justify-center items-center flex-col gap-1"> {props.title}</ModalHeader>
               <ModalBody>
-                  <p>{props.content}</p>
+                  <p><MathJax>{props.content}</MathJax></p>
               </ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>Close</Button>

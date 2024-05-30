@@ -2,7 +2,6 @@ import { multiply } from "mathjs";
 import MagicButton from "./MagicButton";
 import { useCallback } from "react";
 import { Button, Tooltip, useDisclosure } from "@nextui-org/react";
-import MathJax from "./Mathjax"; 
 import CodificationExp from "./CodificationExp";
 export default function Correction(){
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
@@ -51,7 +50,7 @@ export default function Correction(){
        })
      }, [])
 
-     const content = " We take the codification of the word $\\textbf{w}$, which we'll call $\\textbf{w}^*$, we'll take the parity check matrix $H_3$. If $\\textbf{w}^*H_3^t = \\textbf{0}$, $\\textbf{w}^*$ ain't have any error. On the other hand, if $\\textbf{w}^*H_3^t = \\omega$, where $\\omega \\neq \\textbf{0}$ then the word has an error. if we convert $\\omega$ from binary to decimal, we obtain the position in the vector where it's the error in $\\textbf{w}^*$, since we're in $\\mathbb{F}_2$, is easy correct the error. The Hamming code can fix only one error.  "
+     const content = " We take the codification of the word \\(\\textbf{w}\\), which we'll call \\(\\textbf{w}^*\\), we'll take the parity check matrix \\(H_3\\). If \\(\\textbf{w}^*H_3^t = \\textbf{0}\\), \\(\\textbf{w}^*\\) ain't have any error. On the other hand, if \\(\\textbf{w}^*H_3^t = \\omega\\), where \\(\\omega \\neq \\textbf{0}\\) then the word has an error. if we convert \\(\\omega\\) from binary to decimal, we obtain the position in the vector where it's the error in \\(\\textbf{w}^*\\), since we're in \\(\\mathbb{F}_2\\), is easy correct the error. The Hamming code can fix only one error.  "
   return(
     <>
       <section id="correction" className=" relative z-10 h-fit flex justify-center flex-col items-center bg-gradient-to-r  from-black to-danger-50">
@@ -70,7 +69,6 @@ export default function Correction(){
               hover:bg-white hover:text-content1 transition-all">?</Button>
           </Tooltip>
         </div>
-        <MathJax/>
         <CodificationExp isOpen = {isOpen} onOpenChange={onOpenChange} content={content} title="Correction" />
         
       </section>

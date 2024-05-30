@@ -1,7 +1,6 @@
 "use client"
 import { multiply } from "mathjs";
 import { useRef, useCallback } from "react";
-import MathJax from "./Mathjax";
 import { Button, Tooltip, useDisclosure } from "@nextui-org/react";
 import InputsGroup from "./InputsGroup";
 import CodificationExp from "./CodificationExp";
@@ -45,7 +44,7 @@ export default function Codification(){
       else node.lastChild.classList.replace("w-full", "w-0")
     })
   },[])
-  const content = `To codificate we just take the given word $\\textbf{w} \\in \\mathbb{F}_2^4$ and multiply it with the generator matrix $G$ from the Hamming binary code $\\mathscr{H}_3.$ That matrix is 
+  const content = `To codificate we just take the given word \\(\\textbf{w} \\in \\mathbb{F}_2^4\\) and multiply it with the generator matrix \\(G\\) from the Hamming binary code \\(\\mathscr{H}_3.\\) That matrix is 
   $$G = \\left( \\begin{array}{cccc|ccc}
      1 & 0 & 0 & 0 & 0 & 1 & 1 \\\\
      0 & 1 & 0 & 0 & 1 & 0 & 1 \\\\
@@ -70,7 +69,6 @@ export default function Codification(){
                 hover:bg-white hover:text-content1 transition-all">?</Button>
             </Tooltip>
           </div>
-          <MathJax/>
           <CodificationExp isOpen = {isOpen} onOpenChange={onOpenChange} content={content} title="Codification" />
         </section>
      </>   
